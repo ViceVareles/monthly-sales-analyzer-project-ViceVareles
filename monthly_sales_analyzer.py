@@ -23,28 +23,69 @@ sales_data = [
 ]
 
 def total_sales_by_product(data, product_key):
-    """Calculates the total sales of a specific product in 30 days."""
-    pass
+    """Calculates the total sales of a specific product in 20 days."""
+    total = 0
+
+    for day in data:
+        total += day[product_key]     
+    return(total)
+print("Total sales of product_a:", total_sales_by_product(sales_data, "product_a"))   
+
 
 
 def average_daily_sales(data, product_key):
     """Calculates the average daily sales of a specific product."""
-    pass
+    total = 0
+
+    for day in data:
+        total += ((day[product_key]) /20)     
+    return(total)
+print("Average daily sales of product_b:", average_daily_sales(sales_data, "product_b"))
+
+
+
 
 
 def best_selling_day(data):
     """Finds the day with the highest total sales."""
-    pass
+    total = 0
+
+    for day in data:
+        total = day["product_a"] + day["product_b"] + day["product_c"]     
+    return(total)
+print("Day with highest total sales:", best_selling_day(sales_data))
 
 
 def days_above_threshold(data, product_key, threshold):
-    """Counts how many days the sales of a product exceeded a given threshold."""
-    pass
+    """Counts how many days the sales of a product exceeded a given threshold (300)."""
+    total = 0
+    for day in data:
+        if day[product_key] > threshold:
+            total += 1
+    return total
+
+print("Days when product_c exceeded 300 sales:", days_above_threshold(sales_data, "product_c", 300))
+
+
+
+    
+
+    
 
 
 def top_product(data):
-    """Determines which product had the highest total sales in 30 days."""
-    pass
+    """Determines which product had the highest total sales in 20 days."""
+    sales_product_a = total_sales_by_product(sales_data, "product_a")  
+    sales_product_b = total_sales_by_product(sales_data, "product_b")
+    sales_product_c = total_sales_by_product(sales_data, "product_c")
+    highest = max(sales_product_a, sales_product_b, sales_product_c)
+    if highest == sales_product_a:
+        return ("product_a") 
+    elif highest == sales_product_b:
+        return ("product_b")
+    else: 
+        return ("product_c")
+print("Product with highest total sales:", top_product(sales_data))    
 
 
 
